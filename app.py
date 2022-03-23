@@ -87,6 +87,8 @@ def update_user(user_id):
 @app.route('/delete/<int:user_id>')
 def delete_user(user_id):
   user = User.query.get_or_404(user_id)
+  # db.session(user).delete()
+  # db.session.commit()
 
   return render_template('delete.html', user=user)
 
@@ -95,4 +97,9 @@ def delete_user(user_id):
 def confirm_delete(user_id):
   user = User.query.get_or_404(user_id)
 
+  db.session().delete(user)
+  db.session.commit()
+
   return redirect('/list')
+
+
