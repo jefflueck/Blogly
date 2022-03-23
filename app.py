@@ -1,7 +1,7 @@
 """Blogly application."""
 
 from tkinter import Button
-from flask import Flask, render_template,request,redirect,flash,session
+from flask import Flask, render_template,request,redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User
 
