@@ -16,8 +16,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-
-    <link rel="stylesheet" href="/static/stlye.css" />
+    <link rel="stylesheet" href="" />
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -28,23 +27,37 @@
     <![endif]-->
     <div class="container-fluid">
       <div class="text-center">
-        <h1 class="h1">Details</h1>
-        <img
-          class="img-fluid mb-1"
-          src="{{user.image_url}}"
-          alt="User Profile image"
-        />
-        <p class="text-primary">
-          First Name: {{user.first_name}} {{user.last_name}}
-        </p>
-        <p class="text-danger text-uppercase">This cannot be reversed!</p>
-        <form method="POST">
-          <button class="btn-danger">Delete</button>
+        <!-- <ul class="list-group">
+          {% for user in users %}
+          <li>{{user.first_name}} {{user.last_name}}</li>
+          <li class="list-group-item list-group-horizontal">
+            <p>some text</p>
+            <a href="/post/<int: post_id>"><button>Edit</button></a>
+            <a href="/delete/<int: post_id>"><button>Delete</button></a>
+          </li>
+          {%endfor%} -->
+        <h1>Make New Post</h1>
+        <form class="col-6 m-auto" method="POST">
+          <input
+            class="form-control form-control-md mb-2"
+            type="text"
+            name="title"
+            placeholder="Enter Title of Post"
+          />
+
+          <textarea
+            class="form-control form-control-md img-fluid"
+            type="text"
+            name="content"
+            placeholder="Enter Post Content"
+            rows="10"
+            cols="10"
+          ></textarea>
+
+          <button class="btn-success col-md-12 mb-1 mt-2">Submit Post</button>
         </form>
         <a href="/list"
-          ><button class="btn-success m-1" type="button">
-            Return to list of users
-          </button></a
+          ><button class="btn-primary col-6 m-auto">Return to list</button></a
         >
       </div>
     </div>
