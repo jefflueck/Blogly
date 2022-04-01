@@ -2,8 +2,9 @@
 
 from flask import Flask, render_template,request,redirect
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User, Post
+from models import db, connect_db, User, Post, Tag, PostTag
 import datetime;
+DEFAULT_URL = 'https://pngimg.com/uploads/snoopy/snoopy_PNG82.png'
 
 app = Flask(__name__)
 
@@ -67,17 +68,12 @@ def update_user(user_id):
 
   user.first_name = request.form['first_name']
   user.last_name = request.form['last_name']
-  user.image_url = request.form['image_url']
-  user.image_url = user.image_url if user.image_url else None
+  user.image_url = request.form['image_url'] or DEFAULT_URL
 
-
-  updated_user = User(first_name=user.first_name, last_name=user.last_name, image_url=user.image_url)
-
-  db.session.delete(user)
-  db.session.add(updated_user)
+  db.session.add(user)
   db.session.commit()
 
-  return render_template('/list')
+  return redirect('/list')
 
 
 @app.route('/delete/<int:user_id>')
