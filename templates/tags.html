@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Current Users</title>
+    <title>Blogly Current Tags</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -25,44 +25,22 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-    <div class="container-fluid">
+    <div class="'container-fluid">
       <div class="text-center">
-        <h1>Current Users</h1>
+        <h1 class="h1">Current Tags</h1>
         <ul class="list-group">
-          {% for user in users %}
+          {% for tag in tags %}
           <li class="list-group-item list-group-horizontal">
-            <span><img src="{{user.image_url}}" alt="Snoopy pic" /></span
-            >{{user.first_name}} {{user.last_name}}
-            <a href="/details/{{user.id}}"
-              ><button class="btn-primary btn-sm">Details</button></a
+            {{ tag.name }}
+            <a href=""
+              ><button class="btn-danger btn-sm m-sm-auto">Edit</button></a
             >
           </li>
-          {%endfor%}
+          {% endfor %}
         </ul>
-        <form class="col-6 m-auto" method="POST">
-          <input
-            class="form-control form-control-md"
-            type="text"
-            name="first_name"
-            placeholder="Enter First Name"
-          />
-          <input
-            class="form-control form-control-md"
-            type="text"
-            name="last_name"
-            placeholder="Enter Last Name"
-          />
-          <input
-            class="form-control form-control-md img-fluid"
-            type="text"
-            name="image_url"
-            placeholder="Enter Image URL Address for your profile picture"
-          />
-          <button class="btn-success col-md-12 mb-1 mt-1">Submit User</button>
-        </form>
-        <a href="/"
-          ><button class="btn-primary col-6 m-auto">Welcome Page</button></a
-        >
+        <div class="btn-toolbar justify-content-center">
+          <a href="/"><button class="btn-success m-2">Home Page</button></a>
+        </div>
       </div>
     </div>
     <script src="" async defer></script>

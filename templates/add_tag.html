@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Current Users</title>
+    <title>Add A Tag</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -27,36 +27,12 @@
     <![endif]-->
     <div class="container-fluid">
       <div class="text-center">
-        <h1>Current Users</h1>
-        <ul class="list-group">
-          {% for user in users %}
-          <li class="list-group-item list-group-horizontal">
-            <span><img src="{{user.image_url}}" alt="Snoopy pic" /></span
-            >{{user.first_name}} {{user.last_name}}
-            <a href="/details/{{user.id}}"
-              ><button class="btn-primary btn-sm">Details</button></a
-            >
-          </li>
-          {%endfor%}
-        </ul>
         <form class="col-6 m-auto" method="POST">
           <input
             class="form-control form-control-md"
             type="text"
-            name="first_name"
-            placeholder="Enter First Name"
-          />
-          <input
-            class="form-control form-control-md"
-            type="text"
-            name="last_name"
-            placeholder="Enter Last Name"
-          />
-          <input
-            class="form-control form-control-md img-fluid"
-            type="text"
-            name="image_url"
-            placeholder="Enter Image URL Address for your profile picture"
+            name="name"
+            placeholder="Enter Tag Name"
           />
           <button class="btn-success col-md-12 mb-1 mt-1">Submit User</button>
         </form>

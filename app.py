@@ -2,9 +2,9 @@
 
 from flask import Flask, render_template,request,redirect
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User, Post, Tag, PostTag
+from models import db, connect_db, User, Post, Tag, PostTag, DEFAULT_URL
 import datetime;
-DEFAULT_URL = 'https://pngimg.com/uploads/snoopy/snoopy_PNG82.png'
+# DEFAULT_URL = 'https://pngimg.com/uploads/snoopy/snoopy_PNG82.png'
 
 app = Flask(__name__)
 
@@ -157,6 +157,27 @@ def submit_post_update(post_id):
   db.session.commit()
   user = User.query.get_or_404(post.user_id)
   return redirect('/details/' + str(user.id))
+
+@app.route('/tags')
+def show_tag():
+  tags = Tag.query.all()
+  return render_template('tags.html', tags=tags)
+
+@app.route('/add_tag')
+def form_add_tag():
+  # name = request.form['name']
+  # new_tag = Tag(name=name)
+  # db.session.add(new_tag)
+  # db.session.commit()
+  return render_template('add_tag.html')
+
+@app.route('/add_tag', methods=["POST"])
+def add_tag():
+  name = request.form['name']
+  new_tag = Tag(name=name)
+  db.session.add(new_tag)
+  db.session.commit()
+  return redirect('/tags')
 
 # @classmethod
 
