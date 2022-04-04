@@ -26,8 +26,16 @@
       </p>
     <![endif]-->
     <div class="container-fluid">
-      <h1 class="text-center h1">{{post.title}}</h1>
-      <p class="text-center">{{post.content}}</p>
+      <div class="text-center">
+        <h1 class="h1">{{post.title}}</h1>
+        <p>{{post.content}}</p>
+        <p class="text-decoration-underline">Current Tag:</p>
+        {% for tag in tags %}
+        <p>{% if tag in post.tags %}{{tag.name}}{% endif %}</p>
+        {% endfor %}
+        <p class="text-decoration-underline">All Tag Choices:</p>
+        <p>{% for tag in tags %} {{ tag.name }} {% endfor %}</p>
+      </div>
       <div class="btn-toolbar justify-content-center">
         <a href="/edit/post/{{post.id}}">
           <button class="btn-primary">Edit Post</button></a

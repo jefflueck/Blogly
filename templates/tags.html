@@ -32,13 +32,19 @@
           {% for tag in tags %}
           <li class="list-group-item list-group-horizontal">
             {{ tag.name }}
-            <a href=""
-              ><button class="btn-danger btn-sm m-sm-auto">Edit</button></a
+            <a href="/edit/tag/{{tag.id}}"
+              ><button class="btn-warning btn-sm m-sm-auto">Edit</button></a
+            >
+            <a href="/delete/tag/{{tag.id}}"
+              ><button class="btn-danger btn-sm m-sm-auto">Delete</button></a
             >
           </li>
           {% endfor %}
         </ul>
         <div class="btn-toolbar justify-content-center">
+          <a href="/add_tag"
+            ><button class="btn-primary m-2">Add A Tag</button></a
+          >
           <a href="/"><button class="btn-success m-2">Home Page</button></a>
         </div>
       </div>

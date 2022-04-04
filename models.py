@@ -26,6 +26,8 @@ class User(db.Model):
   image_url = db.Column(db.Text,
                     nullable=True, default=DEFAULT_URL)
 
+  posts = db.relationship('Post', backref='user', cascade='all, delete-orphan')
+
 
 
 class Post(db.Model):
@@ -47,7 +49,7 @@ class Post(db.Model):
 
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-  users = db.relationship('User', backref=db.backref('posts'))
+  # users = db.relationship('User', backref=db.backref('posts'))
 
 
 class Tag(db.Model):
